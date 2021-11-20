@@ -1,0 +1,6 @@
+{
+  "appId": "com.unearnedconfidence.app",
+  "appName": "unearned-confidence",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}

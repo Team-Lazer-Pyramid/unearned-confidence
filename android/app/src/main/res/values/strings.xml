@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">unearned-confidence</string>
+    <string name="title_activity_main">unearned-confidence</string>
+    <string name="package_name">com.unearnedconfidence.app</string>
+    <string name="custom_url_scheme">com.unearnedconfidence.app</string>
+</resources>

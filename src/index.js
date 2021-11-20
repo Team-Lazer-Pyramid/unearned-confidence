@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import '@ionic/react/css/core.css';
 
 ReactDOM.render(
   <React.StrictMode>
