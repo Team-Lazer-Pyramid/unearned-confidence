@@ -1,28 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
-import { IonButton, IonDatetime } from '@ionic/react';
 
-function App() {
+import { useState, useEffect } from 'react';
+import './App.css';
+import { db } from './firebase.config';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
+
+
+function App() 
+{
+  const [characters, setCharacters] = useState([]);
+  const characterRef = collection(db, "character");
+  const [newName, setNewName] = useState("");
+
+  const createCharacter = async () =>
+  {
+    await addDoc(characterRef, {character_name: newName});
+  };
+
+  useEffect(() => 
+  {
+    const getCharacters = async () =>
+    {
+        const data = await getDocs(characterRef);
+        setCharacters(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    }
+
+    getCharacters();
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-      <IonDatetime displayFormat="MM/DD/YYYY" placeholder="Select Date"></IonDatetime>
-      <IonButton fill="clear" onClick={() => console.log('Bekken Ja Goosch')}>Start</IonButton> 
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <div className="App">
+    <input placholder="Name..." onChange={event => setNewName(event.target.value)} />
+    <button onClick={createCharacter}>Create Character</button>
+    {
+      characters.map((character) => 
+      { 
+        return (
+        <div> 
+          <h1>ID: {character.id}</h1>
+          <h2>Name: {character.character_name}</h2>
+          <text>Strength: {character.attribute_strength}</text> <button>+</button><button>-</button>
+          
+        </div>);
+      })
+    }
     </div>
-  );
+    );
 }
 
 export default App;
