@@ -5,7 +5,7 @@ export const CharacterList = ({ characters = [] }) =>
   <IonList>
     {
       characters.map(character => (
-        <IonCard>
+        <IonCard routerLink="/detail">
           <IonCardHeader>
             <IonLabel>{character?.name}</IonLabel>
           </IonCardHeader>
