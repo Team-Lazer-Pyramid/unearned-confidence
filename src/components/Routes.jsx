@@ -44,12 +44,6 @@ export const Routes = () => {
         <PrivateRoute exact path="/">
           <Redirect to="/characters" />
         </PrivateRoute>
-        <PrivateRoute exact path="/one">
-          <CharacterDetails />
-        </PrivateRoute>
-        <PrivateRoute exact path="/two">
-          <CharacterDetails />
-        </PrivateRoute>
       </IonRouterOutlet>
     </IonReactRouter>
   );
