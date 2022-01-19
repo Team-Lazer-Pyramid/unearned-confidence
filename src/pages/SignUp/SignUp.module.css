@@ -1,0 +1,23 @@
+.wrapper {
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+}
+.signUpFields {
+  display: flex;
+  flex-direction: column;
+}
+.signUpButton {
+  margin: 2rem 0;
+}
+.accountToggle {
+  display: flex;
+  justify-content: center;
+}
+.internal {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 100%;
+}

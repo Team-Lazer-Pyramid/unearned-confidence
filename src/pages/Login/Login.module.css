@@ -1,0 +1,37 @@
+.wrapper {
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+}
+.loginFields {
+  display: flex;
+  flex-direction: column;
+}
+.forgotPassword {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.seperator {
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+.signInButton {
+  margin: 2rem 0;
+}
+.accountToggle {
+  display: flex;
+  justify-content: center;
+}
+.internal {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 100%;
+}
+.google {
+  --background: #4285F4;
+  --color: white;
+}

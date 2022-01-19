@@ -1,5 +1,7 @@
-import React from 'react';
-import { IonLabel } from '@ionic/react';
+import { IonLabel, IonPage } from "@ionic/react";
 
-export const CharacterDetails = ({ details = [] }) =>
-  <IonLabel>This is the character detail page</IonLabel>
+export const CharacterDetails = ({ details = [] }) => (
+  <IonPage>
+    <IonLabel color="tertiary">This is the character detail page</IonLabel>
+  </IonPage>
+);

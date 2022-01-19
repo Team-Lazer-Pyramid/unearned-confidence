@@ -1,47 +1,33 @@
-import { useState, useEffect } from 'react';
-import './App.css';
-import { db } from './firebase.config';
-import { collection, getDocs } from 'firebase/firestore';
-import { CharacterList } from './pages/CharacterList';
-import { CharacterDetails } from './pages/CharacterDetails';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+/* Core CSS required for Ionic components to work properly */
+import "@ionic/react/css/core.css";
 
+/* Basic CSS for apps built with Ionic */
+import "@ionic/react/css/normalize.css";
+import "@ionic/react/css/structure.css";
+import "@ionic/react/css/typography.css";
 
-const App = () => { 
-  const [characters, setCharacters] = useState([]);
-  const characterRef = collection(db, 'users/XstZLwmG2dT59YVmLrI8/characters');
+/* Optional CSS utils that can be commented out */
+import "@ionic/react/css/padding.css";
+import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/text-alignment.css";
+import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/display.css";
 
-  useEffect(() => 
-  {
-    const getCharacters = async () =>
-    {
-      if(!characters.length) {
-        const data = await getDocs(characterRef);
-        setCharacters(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-      }
-      console.log(characters);
-    }
+/* Theme variables */
+import "./theme/variables.css";
 
-    getCharacters();
-  }, [characterRef, characters]);
+import { IonApp } from "@ionic/react";
+import "./App.css";
+import { AuthProvider } from "./contexts/authContext";
+import { Routes } from './components/Routes';
 
-  return (
-    <IonApp className="App">
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path="/characters">
-            <CharacterList characters={characters} />
-          </Route>
-          <Route path="/detail">
-            <CharacterDetails />
-          </Route>
-          <Route exact path="/" render={() => <Redirect to ="/characters" />}/>
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
-  );
-}
+const App = () => (
+  <IonApp className="App">
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
+  </IonApp>
+);
 
 export default App;
